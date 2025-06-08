@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acme Buildsmart - Crafting Excellence in Every Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #000;
+            --secondary: #fff;
+            --accent: #333;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--secondary);
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+
+        section {
+            padding: 80px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1,
+        h2,
+        h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            border: 2px solid var(--primary);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--secondary);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--secondary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 15px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 2px;
+            background-color: var(--primary);
+            margin: 5px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            text-align: center;
+            position: relative;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease;
+        }
+
+        #hero h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        #hero p {
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        #hero .btn {
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--secondary);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border: 10px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            padding: 30px;
+            border: 1px solid #eee;
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-item i {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        /* Vision Section */
+        #vision {
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .vision-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .vision-box {
+            background-color: var(--secondary);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .vision-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .vision-box h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .core-values {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .value {
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Stats Section */
+        #stats {
+            background-color: var(--secondary);
+            text-align: center;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            padding: 30px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .stat-text {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Services Section */
+        #services {
+            background-color: #f9f9f9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background-color: var(--secondary);
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .service-card h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Process Section */
+        #process {
+            background-color: var(--secondary);
+            text-align: center;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            position: relative;
+            padding: 30px;
+            background-color: #f9f9f9;
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            transform: scale(1.05);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            border-radius: 50%;
+        }
+
+        /* Documents Section */
+        #documents {
+            background-color: #f9f9f9;
+        }
+
+        .documents-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .document-category {
+            background-color: var(--secondary);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .document-category h3 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .document-list {
+            list-style: none;
+        }
+
+        .document-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .document-list li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        #projects {
+            background-color: var(--secondary);
+            text-align: center;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: var(--secondary);
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #f9f9f9;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .info-item i {
+            font-size: 1.2rem;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--secondary);
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--secondary);
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background-color: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-text,
+            .about-image {
+                flex: none;
+                width: 100%;
+            }
+
+            .about-image {
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--secondary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #hero h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container container">
+            <a href="#" class="logo">ACME BUILDSMART</a>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <h1>CRAFTING EXCELLENCE IN<br>EVERY PROJECT</h1>
+            <h2>Every Project</h2>
+            <p>At Acme Buildsmart, we provide a comprehensive range of construction services tailored to meet your
+                project needs. Whether you're planning redevelopment, a new building, or optimization of existing
+                project our experienced team is here to help you every step of the way.</p>
+            <a href="#contact" class="btn">Ready to start your construction project?</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>WELCOME TO ACME BUILDSMART</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Acme Buildsmart is a trusted partner in project management consultancy, delivering high-quality
+                        redevelopment and new construction projects with efficiency and integrity.</p>
+                    <div class="features">
+                        <div class="feature-item">
+                            <i class="fas fa-landmark"></i>
+                            <h3>Expertise in Regulations</h3>
+                            <p>Deep knowledge of local regulations and zoning laws to ensure compliance.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-users"></i>
+                            <h3>Stakeholder Coordination</h3>
+                            <p>Effective engagement and coordination with all project stakeholders.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-people-arrows"></i>
+                            <h3>Relocation Planning</h3>
+                            <p>Strategic relocation and rehabilitation planning for seamless transitions.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-project-diagram"></i>
+                            <h3>Integrated Processes</h3>
+                            <p>Combined design and construction processes for efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision">
+        <div class="container">
+            <h2>VISION & MISSION</h2>
+            <div class="vision-content">
+                <div class="vision-box">
+                    <h3>Vision</h3>
+                    <p>"To be the leading force in transforming urban landscapes through smart, sustainable, and
+                        people-centric project management solutions"</p>
+                </div>
+                <div class="vision-box">
+                    <h3>Mission</h3>
+                    <p>"To deliver high-impact redevelopment and construction projects through expert consultancy,
+                        technological integration, and uncompromising commitment to client goals, safety, and
+                        sustainability."</p>
+                    <div class="core-values">
+                        <span class="value">Transparency</span>
+                        <span class="value">Innovation</span>
+                        <span class="value">Accountability</span>
+                        <span class="value">Client Success</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats">
+        <div class="container">
+            <h2>WHY US...</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">300+</div>
+                    <div class="stat-text">Years of Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10M+</div>
+                    <div class="stat-text">Sft Delivered</div>
+                </div>
+            </div>
+            <div class="about-text" style="margin-top: 50px;">
+                <ul style="text-align: left; list-style-position: inside; max-width: 800px; margin: 0 auto;">
+                    <li style="margin-bottom: 15px;">Successfully managed diverse projects across MM Region and Rest of
+                        India–residential, commercial, and mixed-use.</li>
+                    <li style="margin-bottom: 15px;">End-to-end coordination under one roof, reducing confusion and
+                        saving time for housing societies and clients.</li>
+                    <li style="margin-bottom: 15px;">Feasibility, planning, liaising, approvals, vendor coordination,
+                        and execution—handled seamlessly.</li>
+                    <li style="margin-bottom: 15px;">Registered Architectural & Liaising Team</li>
+                    <li style="margin-bottom: 15px;">Offers an added advantage with deep knowledge of local bylaws,
+                        faster proposal approvals, and aligned planning.</li>
+                    <li style="margin-bottom: 15px;">Currently Managing Multiple Active Projects</li>
+                    <li style="margin-bottom: 15px;">Sharp insights to ensure optimal design, budget control, and
+                        statutory compliance—driving successful and timely project completion.</li>
+                    <li style="margin-bottom: 15px;">Client-Focused, Outcome-Driven</li>
+                    <li style="margin-bottom: 15px;">Commitment to transparent processes, timely delivery, and
+                        society-first solutions.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>KEY SERVICES</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Feasibility Studies</h3>
+                    <p>Comprehensive analysis of project viability including financial, technical, and regulatory
+                        aspects.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Planning & Approvals</h3>
+                    <p>Expert handling of all necessary permits and approvals from relevant authorities.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Vendor Coordination</h3>
+                    <p>Management and coordination of all vendors and contractors for seamless execution.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Budgeting & Cost Control</h3>
+                    <p>Detailed budgeting and strict cost control measures to ensure financial efficiency.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Quality & Safety Oversight</h3>
+                    <p>Rigorous quality checks and safety protocols implementation throughout the project.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Timeline Management</h3>
+                    <p>Strict adherence to project timelines with proactive delay prevention strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process">
+        <div class="container">
+            <h2>HOW IT HAPPENS...</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Documentation</h3>
+                    <p>Gathering all necessary documents and preparing for the initial stages of the project.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Feasibility Study Report</h3>
+                    <p>Conducting thorough analysis to determine project viability and requirements.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Meeting with Stakeholders</h3>
+                    <p>Engaging with all parties involved to align goals and expectations.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Selection of Developer</h3>
+                    <p>Choosing the right development partner for the project's specific needs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Agreement and Legal Permits</h3>
+                    <p>Finalizing contracts and obtaining all necessary legal permissions.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h3>Work in Progress to OC</h3>
+                    <p>Overseeing construction through completion and obtaining Occupancy Certificate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section id="documents">
+        <div class="container">
+            <h2>LIST OF DOCUMENTS REQUIRED</h2>
+            <div class="documents-container">
+                <div class="document-category">
+                    <h3>OWNERSHIP</h3>
+                    <ul class="document-list">
+                        <li>Lease deed & Society Registration, Tenement Details updated in CDCO records. Private Survey
+                            of Plot & Risks.</li>
+                        <li>Proof of Building Age above 30 years or proof of building or Dilapidated condition
+                            Certificate C1 / Structural Audit Report.</li>
+                        <li>Development Program (DA) / Power of attorney.</li>
+                        <li>Registration of Association/from Registrar of Co-operative Societies.</li>
+                        <li>Authority Letter given to Office Beavers of Association in Original.</li>
+                        <li>Consent Letter for Amatganation / Subdivision / Reconstruction from members of Association
+                            in original.</li>
+                        <li>List of membership/internematerials certified from CDCOLID.</li>
+                        <li>Plot Chain of documents, Demarcation plan, Plan, tenement Piers etc. from CDCOLID.</li>
+                        <li>DP Remark from NMMC TPO.</li>
+                        <li>Redevelopment proceeds as per 79 (A).</li>
+                    </ul>
+                </div>
+                <div class="document-category">
+                    <h3>NOCs</h3>
+                    <ul class="document-list">
+                        <li>CDCO NOC for Demotion, Premium, TDR & Ancillary FSI</li>
+                        <li>Height NOC from Airport Authority of India.</li>
+                        <li>NOC from Property Tax / MERCL / MGL / Water / Tiger / FRE / MCE Department.</li>
+                        <li>NOC from Financial Institute when flat is mortgaged.</li>
+                        <li>Title Clearance Certificate from Advocate.</li>
+                        <li>Any other NOC as required by CDCO / NMMC from time to time.</li>
+                        <li>NOC from CDCO, in case of sharing of FSI is proposed.</li>
+                        <li>NOC from City Engineering Section for Road Widening, off any!</li>
+                        <li>NOC from CDCO Ltd. for Redevelopment.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>ACCOMPLISHMENTS</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Jain Residence">
+                    <div class="project-overlay">
+                        <h3>Jain Residence, Khar</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Saket World">
+                    <div class="project-overlay">
+                        <h3>Saket World, Kalyan</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Gurunanak Hospital">
+                    <div class="project-overlay">
+                        <h3>Gurunanak Hospital, BKC</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80"
+                        alt="Gepi Birla School">
+                    <div class="project-overlay">
+                        <h3>Gepi Birla School, Walkeshwar</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80"
+                        alt="Tresind Dubai">
+                    <div class="project-overlay">
+                        <h3>Tresind Dubai, BKG</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Amar West View">
+                    <div class="project-overlay">
+                        <h3>Amar West View, Pune</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Indiabulls Blue">
+                    <div class="project-overlay">
+                        <h3>Indiabulls Blue, Worli</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1600566752225-8f2098485a6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Romell Trimurti">
+                    <div class="project-overlay">
+                        <h3>Romell Trimurti, Mulund</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Projects Section -->
+    <section id="current-projects" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2>PROJECTS AT HAND</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Satyam Trinity">
+                    <div class="project-overlay">
+                        <h3>Satyam Trinity Necklace</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Metro-Satyam Queens">
+                    <div class="project-overlay">
+                        <h3>Metro-Satyam Queens</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Metro-Satyam Mansions">
+                    <div class="project-overlay">
+                        <h3>Metro-Satyam Mansions</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80"
+                        alt="Metro Satyam Regents Park">
+                    <div class="project-overlay">
+                        <h3>Metro Satyam Regents Park</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
