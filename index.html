@@ -875,13 +875,13 @@
         }
 
         .company-name {
-            font-size: 1.8rem;
+            font-size: 20px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 5px;
             margin: 40px 0;
             color: var(--primary);
-            text-align: left;
+            text-align: center;
         }
 
         .presentation {
@@ -952,9 +952,10 @@
         /* Update infographic text for mobile */
         @media (max-width: 768px) {
             .company-name {
-                font-size: 14px;
+                font-size: 8px;
                 letter-spacing: 2px;
                 line-height: 1.3;
+                text-align: center;
             }
 
             .pie-chart {
@@ -1435,6 +1436,9 @@
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
 
+            // Make sure hamburger starts in the correct state
+            hamburger.classList.remove('toggle');
+
             hamburger.addEventListener('click', function () {
                 navLinks.classList.toggle('active');
 
@@ -1451,6 +1455,7 @@
             });
         });
     </script>
+
 </body>
 
 </html>
